@@ -161,7 +161,7 @@ def animal_page():
 
     with tabs[0]:
         uploaded_file = st.file_uploader(
-            "Загрузите изображение животного",
+            "Загрузите изображение животного: кот, собака, гепард",
             type=["png", "jpg", "jpeg"],
             key="animal_uploader"
         )
