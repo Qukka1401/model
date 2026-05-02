@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 from PIL import Image
 from streamlit_drawable_canvas import st_canvas
+from pathlib import Path
 
 
 st.set_page_config(
@@ -19,8 +20,9 @@ DIGIT_API_URL = f"{API_BASE_URL}/predict/digit"
 ANIMAL_API_URL = f"{API_BASE_URL}/predict/animal"
 
 # Пути к изображениям с метриками
-CONFUSION_PATH = "assets/confusion_matrices.png"
-METRICS_PATH = "assets/metrics_comparison.png"
+BASE_DIR = Path(__file__).parent
+CONFUSION_PATH = BASE_DIR / "assets" / "confusion_matrices.png"
+METRICS_PATH = BASE_DIR / "assets" / "metrics_comparison.png"
 
 
 def prepare_image_bytes(image: Image.Image) -> bytes:
@@ -84,16 +86,18 @@ def show_metrics_images():
     col1, col2 = st.columns(2)
 
     with col1:
-        if os.path.exists(CONFUSION_PATH):
-            st.image(CONFUSION_PATH, caption="Матрицы ошибок моделей", use_container_width=True)
+        if CONFUSION_PATH.exists():
+            st.image(str(CONFUSION_PATH), caption="Матрицы ошибок моделей", use_container_width=True)
         else:
-            st.warning("Файл confusion_matrices.png не найден")
+            st.warning(f"🖼 Файл не найден: {CONFUSION_PATH}")
+            st.info(f"Текущая директория: {Path.cwd()}")
+            st.info(f"Содержимое assets: {list((BASE_DIR / 'assets').glob('*')) if (BASE_DIR / 'assets').exists() else 'Папка assets не существует'}")
 
     with col2:
-        if os.path.exists(METRICS_PATH):
-            st.image(METRICS_PATH, caption="Сравнение метрик моделей", use_container_width=True)
+        if METRICS_PATH.exists():
+            st.image(str(METRICS_PATH), caption="Сравнение метрик моделей", use_container_width=True)
         else:
-            st.warning("Файл metrics_comparison.png не найден")
+            st.warning(f"🖼 Файл не найден: {METRICS_PATH}")
 
 
 def digit_page():
