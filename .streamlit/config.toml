@@ -1,6 +1,6 @@
 [theme]
 primaryColor = "#FF69B4"          # Hot pink — кнопки, акценты
 backgroundColor = "#FFF0F5"       # Lavender blush — фон страницы
-secondaryBackgroundColor = "#FFE4E1"  # Misty rose — фон виджетов
+secondaryBackgroundColor = "#FFF0F5"  # Misty rose — фон виджетов
 textColor = "#4A4A4A"             # Тёмно-серый для читаемости
 font = "sans serif"
