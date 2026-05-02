@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 # Базовый URL API
-API_BASE_URL = "http://127.0.0.1:8000"
+API_BASE_URL = "https://model-98kv.onrender.com"
 
 DIGIT_API_URL = f"{API_BASE_URL}/predict/digit"
 ANIMAL_API_URL = f"{API_BASE_URL}/predict/animal"
